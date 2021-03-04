@@ -6,22 +6,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.TaskModule = void 0;
 const common_1 = require("@nestjs/common");
-const app_controller_1 = require("./app.controller");
-const task_module_1 = require("./task/task.module");
+const task_service_1 = require("./task.service");
+const task_controller_1 = require("./task.controller");
 const mongoose_1 = require("@nestjs/mongoose");
-let AppModule = class AppModule {
+const task_schema_1 = require("./schema/task.schema");
+let TaskModule = class TaskModule {
 };
-AppModule = __decorate([
+TaskModule = __decorate([
     common_1.Module({
-        controllers: [app_controller_1.AppController],
-        providers: [],
         imports: [
-            task_module_1.TaskModule,
-            mongoose_1.MongooseModule.forRoot('mongodb+srv://sledesma:cleonitro@clasemongo.djmwo.mongodb.net/tareas_db?retryWrites=true&w=majority'),
+            mongoose_1.MongooseModule.forFeature([{ name: task_schema_1.Task.name, schema: task_schema_1.TaskSchema }]),
         ],
+        providers: [task_service_1.TaskService],
+        controllers: [task_controller_1.TaskController],
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], TaskModule);
+exports.TaskModule = TaskModule;
+//# sourceMappingURL=task.module.js.map

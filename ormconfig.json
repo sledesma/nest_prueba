@@ -1,0 +1,5 @@
+{
+  "type": "mongodb",
+  "url": "mongodb+srv://sledesma:cleonitro@clasemongo.djmwo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "entities": ["dist/**/*.entity{.ts,.js}"]
+}
